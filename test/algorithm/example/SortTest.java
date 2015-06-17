@@ -1,12 +1,16 @@
 package algorithm.example;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.LinkedList;
 import java.util.List;
+
+import javax.swing.text.Highlighter.Highlight;
 
 import org.junit.Test;
 
@@ -47,4 +51,61 @@ public class SortTest {
 		Collections.sort(numbers, new ReverseNumericalOrder());
 		assertEquals(expected, numbers);
 	}
+	
+	public void bubbleSort(int[] numbers) {
+		boolean numbersSwitched;
+		
+		do {
+			numbersSwitched = false;
+			for (int i = 0 ; i < numbers.length - 1 ; i++) {
+				if (numbers[i + 1] < numbers[i]) {
+					int tmp = numbers[i + 1];
+					numbers[i + 1] = numbers[i];
+					numbers[i] = tmp;
+					numbersSwitched = true;
+				}
+			}
+		} while(numbersSwitched);
+	}
+	
+	public static List<Integer> insertSort(final List<Integer> numbers) {
+		final List<Integer> sortedList = new LinkedList<Integer>();
+		
+		originalList: for (Integer number : numbers) {
+			for (int i = 0 ; i < sortedList.size() ; i++) {
+				if (number < sortedList.get(i)) {
+					sortedList.add(i, number);
+					continue originalList;
+				}
+			}
+			sortedList.add(sortedList.size(), number);
+		}
+		
+		return sortedList;
+	}
+	
+	public static List<Integer> quicksort(List<Integer> numbers) {
+		if (numbers.size() < 2) {
+			return numbers;
+		}
+		
+		final Integer pivot = numbers.get(0);
+		final List<Integer> lower = new ArrayList<Integer>();
+		final List<Integer> higher = new ArrayList<Integer>();
+		
+		for (int i = 1 ; i < numbers.size() ; i++) {
+			if (numbers.get(i) < pivot) {
+				lower.add(numbers.get(i));
+			} else {
+				higher.add(numbers.get(i));
+			}
+		}
+		
+		final List<Integer> sorted = quicksort(lower);
+		sorted.add(pivot);
+		sorted.addAll(quicksort(higher));
+		
+		return sorted;
+	}
+
 }
