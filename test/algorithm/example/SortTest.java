@@ -10,8 +10,6 @@ import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 
-import javax.swing.text.Highlighter.Highlight;
-
 import org.junit.Test;
 
 public class SortTest {
@@ -55,7 +53,7 @@ public class SortTest {
 	@Test
 	public void sortTest() {
 		final int[] numbers = {2, 9, 4, 6, 1, 8};
-		final List<Integer> nums1 = Arrays.asList(2, 9, 4, 6, 1, 8);
+		final List<Integer> nums1 = Arrays.asList(2, 9, 4, 6, 3, 8, 1);
 		
 		System.out.println("insert sort result=" + insertSort(nums1));
 		System.out.println("quick sort result=" + quicksort(nums1));

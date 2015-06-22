@@ -1,10 +1,15 @@
 package algorithm.example;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.Map;
 import java.util.Queue;
 import java.util.Random;
+import java.util.TreeMap;
 
 import org.junit.Test;
 
@@ -38,6 +43,9 @@ public class DataStructureTest {
 		assertEquals(5, integers[5]);
 	}
 	
+	/**
+	 * Queue 이용하기
+	 */
 	@Test
 	public void queueInsertion() {
 		final Queue<String> queue = new LinkedList<>();
@@ -49,7 +57,41 @@ public class DataStructureTest {
 		assertEquals("second", queue.remove());
 		assertEquals("third", queue.peek());
 		assertEquals("third", queue.remove());
+	}
+	
+	/**
+	 * 맵에서 키를 덮어쓰는 예
+	 */
+	@Test
+	public void overwirteKey() {
+		final Map<String, String> preferences = new HashMap<>();
+		preferences.put("like", "jacuzzi");
+		preferences.put("dislike", "steam room");
 		
+		assertEquals("jacuzzi", preferences.get("like"));
+		
+		preferences.put("like", "sauna");
+		
+		assertEquals("sauna", preferences.get("like"));
+	}
+	
+	/**
+	 * TreeMap 클래스를 이용한 순서가 보존되는 순회
+	 */
+	@Test
+	public void treeMapTraversal() {
+		final Map<Integer, String> counts = new TreeMap<Integer, String>();
+		counts.put(4, "four");
+		counts.put(1, "one");
+		counts.put(3, "three");
+		counts.put(2, "two");
+		
+		final Iterator<Integer> keys = counts.keySet().iterator();
+		assertEquals(Integer.valueOf(1), keys.next());
+		assertEquals(Integer.valueOf(2), keys.next());
+		assertEquals(Integer.valueOf(3), keys.next());
+		assertEquals(Integer.valueOf(4), keys.next());
+		assertFalse(keys.hasNext());
 	}
 
 }
