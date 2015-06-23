@@ -1,4 +1,4 @@
-package algorithm.example.designpattern;
+package example.designpattern.strategy;
 
 public interface Logging {
 	void write(String message);

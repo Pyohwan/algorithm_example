@@ -1,4 +1,4 @@
-package algorithm.example.designpattern;
+package example.designpattern.strategy;
 
 public class ConsoleLogging implements Logging {
 

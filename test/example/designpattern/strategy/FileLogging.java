@@ -1,4 +1,4 @@
-package algorithm.example.designpattern;
+package example.designpattern.strategy;
 
 import java.io.File;
 import java.io.FileWriter;
