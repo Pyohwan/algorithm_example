@@ -6,8 +6,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.junit.Test;
-
 /**
  * 주어진 단어의 목록에서 특정 단어에 대한 전체 애너그램 목록을 반화하는 알고리즘을 작성하라.
  * @author pyohwan
@@ -40,9 +38,5 @@ public class Anagrams {
 		final List<String> anagrams = lookup.get(signature);
 		return anagrams == null ? new ArrayList<String>() : anagrams;
 	}
-	
-	@Test
-	public void anagramsTest() {
-		System.out.println(getAnagrams("zeroe"));
-	}
+
 }
