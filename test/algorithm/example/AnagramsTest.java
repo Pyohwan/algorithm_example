@@ -16,6 +16,5 @@ public class AnagramsTest {
 	public void anagramsTest() {
 		Anagrams anagrams = new Anagrams(Arrays.asList("football", "echo"));
 		System.out.println(anagrams.getAnagrams("echo"));
-	}
-
+	}	
 }

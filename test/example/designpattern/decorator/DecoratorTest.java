@@ -1,5 +1,7 @@
 package example.designpattern.decorator;
 
+import static org.junit.Assert.assertTrue;
+
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -7,7 +9,6 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
-import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
 public class DecoratorTest {
@@ -30,5 +31,4 @@ public class DecoratorTest {
 		
 		assertTrue(f.exists());
 	}
-	
 }
