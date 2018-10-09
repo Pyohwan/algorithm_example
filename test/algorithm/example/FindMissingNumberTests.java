@@ -20,10 +20,10 @@ public class FindMissingNumberTests {
     private List<Integer> getMissingNumbers(List<Integer> numbers) {
 
         // sort and distinct
-        List<Integer> cleanedNumbers = numbers.stream().sorted().distinct().collect(Collectors.toList());
+        List<Integer> sourceNumbers = numbers.stream().sorted().distinct().collect(Collectors.toList());
 
-        Integer firstNumber = cleanedNumbers.get(0);
-        Integer lastNumber = cleanedNumbers.get(cleanedNumbers.size() -1);
+        Integer firstNumber = sourceNumbers.get(0);
+        Integer lastNumber = sourceNumbers.get(sourceNumbers.size() -1);
 
         // verify numbers are between 0 ~ 100.
         if (firstNumber < 0 || lastNumber > 100) {
@@ -31,21 +31,23 @@ public class FindMissingNumberTests {
         }
 
         List<Integer> missingNumbers = new ArrayList<>();
-        Integer cleanedNumbersIdx = 0;
+        Integer sourceNumbersIdx = 0;
 
+        // Loop from smallest to largest number of sourceNumbers with fullCount.
+        // If value of sourceNumbers is not equal to fullCount, It is missing number.
         for (Integer fullCount = firstNumber ; fullCount <= lastNumber ; fullCount++) {
-            Integer getCleanedNumber = cleanedNumbers.get(cleanedNumbersIdx);
+            Integer getCleanedNumber = sourceNumbers.get(sourceNumbersIdx);
 
             if (getCleanedNumber.equals(fullCount)) {
-                cleanedNumbersIdx++;
+                sourceNumbersIdx++;
             } else if (! getCleanedNumber.equals(fullCount)) {
                 missingNumbers.add(fullCount);
             }
         }
 
-        // something is wrong.
-        if (cleanedNumbersIdx < cleanedNumbers.size() -1) {
-            throw new RuntimeException("Could not do foreach cycle.");
+        // Could not do foreach fully.
+        if (sourceNumbersIdx < sourceNumbers.size() -1) {
+            throw new RuntimeException("Could not do foreach fully.");
         }
 
         return missingNumbers;
