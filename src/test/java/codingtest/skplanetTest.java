@@ -1,4 +1,4 @@
-package algorithm.example;
+package codingtest;
 
 import org.junit.Test;
 

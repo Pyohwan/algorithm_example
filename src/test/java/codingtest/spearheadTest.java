@@ -1,4 +1,4 @@
-package algorithm.example;
+package codingtest;
 
 import java.util.Arrays;
 import java.util.Stack;
